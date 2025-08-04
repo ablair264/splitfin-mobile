@@ -1,0 +1,245 @@
+.migration-panel {
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.migration-header {
+  background: linear-gradient(135deg, #448382 0%, #6c8471 100%);
+  padding: 2rem;
+  color: white;
+}
+
+.migration-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.migration-header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.migration-content {
+  padding: 2rem;
+}
+
+.migration-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.migration-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.migration-section h3 {
+  color: #e0e0e0;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.migration-section p {
+  color: #a0a0a0;
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+.migration-section ul {
+  color: #a0a0a0;
+  margin: 0 0 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.migration-section li {
+  margin-bottom: 0.5rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #448382;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #357371;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(68, 131, 130, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dry-run-result {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.dry-run-result.up-to-date {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.dry-run-result.needs-update {
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.result-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.dry-run-result h4 {
+  color: #e0e0e0;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.dry-run-result p {
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.migration-progress {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.progress-message {
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #448382 0%, #6c8471 100%);
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+.progress-percentage {
+  text-align: right;
+  color: #a0a0a0;
+  font-size: 0.85rem;
+}
+
+.migration-result {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.migration-result.success {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.migration-result.error {
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.migration-result h4 {
+  color: #e0e0e0;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.migration-result p {
+  color: #a0a0a0;
+  margin: 0 0 0.5rem 0;
+}
+
+.migration-result p:last-child {
+  margin-bottom: 0;
+}
+
+.migration-instructions {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.migration-instructions h3 {
+  color: #e0e0e0;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+}
+
+.migration-instructions ul {
+  color: #a0a0a0;
+  margin: 0;
+  padding-left: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.migration-instructions li {
+  margin-bottom: 0.5rem;
+}
+
+.migration-instructions li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .migration-panel {
+    margin: 1rem;
+  }
+  
+  .migration-header,
+  .migration-content {
+    padding: 1.5rem;
+  }
+  
+  .migration-instructions {
+    padding: 1.5rem;
+  }
+}

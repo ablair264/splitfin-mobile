@@ -1,0 +1,356 @@
+/* src/components/CustomerLayout/CustomerLayout.css */
+
+/* ================================================ */
+/* CSS CUSTOM PROPERTIES - CUSTOMER THEME */
+/* ================================================ */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Brand gradients */
+  --brand-gradient: linear-gradient(135deg, #c58390 0%, #965251 100%);
+  --brand-gradient-hover: linear-gradient(135deg, #b07080 0%, #854749 100%);
+  --brand-gradient-subtle: linear-gradient(135deg, rgba(197, 131, 144, 0.08) 0%, rgba(150, 82, 81, 0.08) 100%);
+  --brand-gradient-light: linear-gradient(135deg, rgba(197, 131, 144, 0.15) 0%, rgba(150, 82, 81, 0.15) 100%);
+
+  /* Complementary gradients */
+  --accent-gradient: linear-gradient(135deg, #ffb5a3 0%, #ff7b7b 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #ff9e88 0%, #ff5252 100%);
+  --accent-gradient-subtle: linear-gradient(135deg, rgba(255, 181, 163, 0.08) 0%, rgba(255, 123, 123, 0.08) 100%);
+  --secondary-gradient: linear-gradient(135deg, #4a3045 0%, #6b4c6b 100%);
+  --secondary-gradient-hover: linear-gradient(135deg, #3e2839 0%, #5a405a 100%);
+  --tertiary-gradient: linear-gradient(135deg, #e8a4b8 0%, #b8729e 100%);
+
+  /* Extracted colors */
+  --customer-primary: #c58390;
+  --customer-primary-hover: #b07080;
+  --customer-primary-light: #d0909f;
+  --customer-primary-dark: #a67078;
+  --customer-primary-lighter: rgba(197, 131, 144, 0.12);
+  --customer-secondary: #965251;
+  --customer-secondary-hover: #854749;
+  --customer-secondary-light: #a66d6c;
+  --customer-secondary-dark: #7d423f;
+  --customer-accent: #6b4c6b;
+  --customer-accent-hover: #5a405a;
+  --customer-accent-light: #7d5c7d;
+  --customer-warm: #ffb5a3;
+  --customer-warm-hover: #ff9e88;
+  --customer-coral: #ff7b7b;
+  --customer-coral-hover: #ff5252;
+
+  /* Backgrounds */
+  --customer-page-bg: #faf8f9;
+  --customer-card-bg: #ffffff;
+  --customer-card-hover: #fefcfd;
+  --customer-sidebar: var(--brand-gradient);
+  --customer-sidebar-hover: rgba(255, 255, 255, 0.1);
+  --customer-sidebar-active: rgba(255, 255, 255, 0.15);
+  --customer-bg-neutral: #f5f3f4;
+  --customer-bg-muted: #ede9ea;
+  --customer-bg-subtle: #f9f7f8;
+
+  /* Text colors */
+  --customer-main-text: #2d1b20;
+  --customer-secondary-text: #5c4a4f;
+  --customer-light-text: #8a7a7f;
+  --customer-white-text: #ffffff;
+  --customer-sidebar-text: rgba(255, 255, 255, 0.9);
+  --customer-sidebar-text-hover: #ffffff;
+  --customer-text-on-gradient: #ffffff;
+  --customer-text-on-gradient-muted: rgba(255, 255, 255, 0.85);
+  --customer-text-muted: #a69499;
+}
+
+/* ================================================ */
+/* LAYOUT STRUCTURE */
+/* ================================================ */
+.customer-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--customer-page-bg);
+  color: var(--customer-main-text);
+  margin: 0;
+  padding: 0;
+  gap: 0; /* Ensure no flex gap */
+}
+
+/* Sidebar should be exactly 260px */
+.customer-layout .customer-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.customer-layout .layout-content {
+  flex: 1;
+  margin-left: 0; /* Remove margin-left */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  transition: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  /* Debug: Add temporary background to see the exact boundaries */
+  /* background: rgba(255, 0, 0, 0.1); */
+}
+
+/* Remove any padding from main content that might create gaps */
+.customer-layout .main-content {
+  flex: 1;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: transparent;
+}
+
+/* ================================================ */
+/* MOBILE HEADER */
+/* ================================================ */
+.customer-layout .mobile-header {
+  display: none;
+  background: var(--customer-card-bg);
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(45, 27, 32, 0.08);
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--customer-bg-muted);
+}
+
+.customer-layout .mobile-menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--customer-main-text);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.customer-layout .mobile-menu-toggle:hover {
+  background: var(--customer-bg-subtle);
+  color: var(--customer-primary);
+}
+
+.customer-layout .mobile-page-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--customer-main-text);
+  margin: 0;
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.customer-layout .mobile-page-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ================================================ */
+/* MAIN CONTENT */
+/* ================================================ */
+.customer-layout .main-content {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: transparent;
+  /* Ensure scrollable container */
+  max-height: 100vh;
+  height: 100%;
+}
+
+/* Ensure dashboard starts at the edge */
+.customer-layout .main-content > * {
+  margin: 0;
+}
+
+.customer-layout .main-content > *:first-child {
+  margin-top: 0;
+}
+
+/* ================================================ */
+/* RESPONSIVE DESIGN */
+/* ================================================ */
+@media (max-width: 768px) {
+  .customer-layout .layout-content {
+    margin-left: 0;
+  }
+  
+  .customer-layout .mobile-header {
+    display: flex;
+  }
+  
+  .customer-layout .mobile-sidebar {
+    display: block;
+  }
+  
+  .customer-layout .main-content {
+    padding: 0;
+  }
+  
+  /* Hide desktop sidebar on mobile */
+  .customer-layout .customer-sidebar {
+    display: none;
+  }
+}
+
+/* ================================================ */
+/* MOBILE SIDEBAR */
+/* ================================================ */
+.customer-layout .mobile-sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 27, 32, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.customer-layout .mobile-sidebar-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+.customer-layout .mobile-sidebar {
+  display: none;
+  position: fixed;
+  left: -280px;
+  top: 0;
+  bottom: 0;
+  width: 280px;
+  background: var(--customer-sidebar);
+  z-index: 300;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  box-shadow: 4px 0 20px rgba(45, 27, 32, 0.15);
+}
+
+.customer-layout .mobile-sidebar.open {
+  left: 0;
+}
+
+.customer-layout .mobile-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.customer-layout .mobile-logo {
+  height: 32px;
+  /* Remove filter if logo is already white */
+  /* filter: brightness(0) invert(1); */
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.8));
+}
+
+.customer-layout .close-sidebar {
+  background: none;
+  border: none;
+  color: var(--customer-white-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.customer-layout .close-sidebar:hover {
+  background: var(--customer-sidebar-hover);
+}
+
+/* ================================================ */
+/* ANIMATIONS */
+/* ================================================ */
+@keyframes badgePop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ================================================ */
+/* RESPONSIVE DESIGN */
+/* ================================================ */
+@media (max-width: 768px) {
+  .customer-layout .layout-content {
+    margin-left: 0;
+  }
+  
+  .customer-layout .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .customer-layout .mobile-sidebar {
+    display: block;
+  }
+  
+  .customer-layout .customer-header {
+    padding: 1rem;
+  }
+  
+  .customer-layout .page-title {
+    font-size: 1.25rem;
+  }
+  
+  .customer-layout .main-content {
+    padding: 1rem;
+  }
+
+  .customer-layout .header-right {
+    gap: 0.5rem;
+  }
+  
+  .customer-layout .notification-dropdown {
+    position: fixed;
+    top: auto;
+    right: auto;
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .customer-layout .mobile-page-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* ================================================ */
+/* SCROLLBAR STYLING */
+/* ================================================ */
+.customer-layout .main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.customer-layout .main-content::-webkit-scrollbar-track {
+  background: var(--customer-bg-muted);
+}
+
+.customer-layout .main-content::-webkit-scrollbar-thumb {
+  background: var(--customer-primary-light);
+  border-radius: 4px;
+}
+
+.customer-layout .main-content::-webkit-scrollbar-thumb:hover {
+  background: var(--customer-primary);
+}

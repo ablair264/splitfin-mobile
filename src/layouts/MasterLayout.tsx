@@ -7,11 +7,9 @@ import {
   TouchableOpacity,
   ScrollView,
   Animated,
-  Image,
   Alert,
-  Platform,
+  Text,
 } from 'react-native';
-import { Text, IconButton, Badge } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -60,8 +58,8 @@ const useSimpleOrientation = () => {
   const isTablet = minDimension >= 768;
   const isLandscape = orientation === 'landscape';
   const isPortrait = orientation === 'portrait';
-  const shouldShowSidebar = isTablet && isLandscape;
-  const shouldShowBottomNav = !shouldShowSidebar;
+  const shouldShowSidebar = isTablet; // Always show sidebar on tablet regardless of orientation
+  const shouldShowBottomNav = false; // Disable bottom navigation entirely
 
   return {
     width,
@@ -215,8 +213,8 @@ const Sidebar: React.FC<{
           </Text>
         </View>
         <View style={styles.userInfo}>
-          <Text style={styles.userName}>{user?.name}</Text>
-          <Text style={styles.userRole}>
+          <Text style={[styles.userName, { color: '#ffffff' }]}>{user?.name}</Text>
+          <Text style={[styles.userRole, { color: 'rgba(255, 255, 255, 0.6)' }]}>
             {user?.role === 'salesAgent' ? 'Sales Agent' : 
              user?.role === 'brandManager' ? 'Brand Manager' : 'Admin'}
           </Text>
@@ -248,6 +246,7 @@ const Sidebar: React.FC<{
               <Text style={[
                 styles.navItemText,
                 activeRoute.startsWith(item.route) && styles.navItemTextActive,
+                { color: activeRoute.startsWith(item.route) ? '#79d5e9' : '#ffffff' }, // Force color
               ]}>
                 {item.title}
               </Text>
@@ -286,6 +285,7 @@ const Sidebar: React.FC<{
                     <Text style={[
                       styles.subNavItemText,
                       activeRoute === subItem.route && styles.subNavItemTextActive,
+                      { color: activeRoute === subItem.route ? '#79d5e9' : 'rgba(255,255,255,0.6)' }, // Force color
                     ]}>
                       {subItem.title}
                     </Text>
@@ -482,28 +482,32 @@ const BottomNavigation: React.FC<{
   );
 };
 
+// Import Breadcrumb component
+import { Breadcrumb } from '../components/ui';
+
 // Breadcrumbs Component
-const Breadcrumbs: React.FC<{ route: string }> = ({ route }) => {
-  const breadcrumbMap: { [key: string]: string } = {
-    Dashboard: 'Dashboard',
-    DashboardHome: 'Dashboard > Overview',
-    DashboardOrders: 'Dashboard > Orders',
-    DashboardRevenue: 'Dashboard > Revenue',
-    Customers: 'Customers',
-    CustomersList: 'Customers > All Customers',
-    CustomersNew: 'Customers > Add Customer',
-    Orders: 'Orders',
-    OrdersList: 'Orders > All Orders',
-    Inventory: 'Inventory',
+const Breadcrumbs: React.FC<{ route: string; onNavigate: (route: string) => void }> = ({ route, onNavigate }) => {
+  const breadcrumbMap: { [key: string]: { items: Array<{ label: string; route?: string }> } } = {
+    Dashboard: { items: [{ label: 'Dashboard' }] },
+    DashboardHome: { items: [{ label: 'Dashboard', route: 'Dashboard' }, { label: 'Overview' }] },
+    DashboardOrders: { items: [{ label: 'Dashboard', route: 'Dashboard' }, { label: 'Orders' }] },
+    DashboardRevenue: { items: [{ label: 'Dashboard', route: 'Dashboard' }, { label: 'Revenue' }] },
+    Customers: { items: [{ label: 'Customers' }] },
+    CustomersList: { items: [{ label: 'Customers', route: 'Customers' }, { label: 'All Customers' }] },
+    CustomersNew: { items: [{ label: 'Customers', route: 'Customers' }, { label: 'Add Customer' }] },
+    Orders: { items: [{ label: 'Orders' }] },
+    OrdersList: { items: [{ label: 'Orders', route: 'Orders' }, { label: 'All Orders' }] },
+    Inventory: { items: [{ label: 'Inventory' }] },
+    InventoryOverview: { items: [{ label: 'Inventory', route: 'Inventory' }, { label: 'Overview' }] },
+    InventoryProducts: { items: [{ label: 'Inventory', route: 'Inventory' }, { label: 'Products' }] },
+    LiveStocklists: { items: [{ label: 'Live Stocklists' }] },
+    Agents: { items: [{ label: 'Agent Management' }] },
+    Settings: { items: [{ label: 'Settings' }] },
   };
 
-  const breadcrumb = breadcrumbMap[route] || route;
+  const breadcrumbData = breadcrumbMap[route] || { items: [{ label: route }] };
 
-  return (
-    <View style={styles.breadcrumbContainer}>
-      <Text style={styles.breadcrumbText}>{breadcrumb}</Text>
-    </View>
-  );
+  return <Breadcrumb items={breadcrumbData.items} onNavigate={onNavigate} />;
 };
 
 // Main MasterLayout Component
@@ -561,8 +565,24 @@ const MasterLayout: React.FC<LayoutProps> = ({ children }) => {
     <SafeAreaView style={styles.container}>
       <LinearGradient
         colors={['#0f1419', '#1a1f2a', '#2c3e50']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
         style={StyleSheet.absoluteFillObject}
       />
+      
+      {/* Secondary animated overlay */}
+      <View style={styles.gradientOverlay}>
+        <LinearGradient
+          colors={[
+            'rgba(121, 213, 233, 0.12)',
+            'transparent',
+            'rgba(77, 174, 172, 0.08)',
+          ]}
+          start={{ x: 0.3, y: 0.4 }}
+          end={{ x: 0.7, y: 0.6 }}
+          style={StyleSheet.absoluteFillObject}
+        />
+      </View>
 
       <View style={styles.layoutContainer}>
         {/* Sidebar for landscape tablets */}
@@ -586,7 +606,7 @@ const MasterLayout: React.FC<LayoutProps> = ({ children }) => {
           {orientation.shouldShowSidebar && (
             <View style={styles.header}>
               <BlurView intensity={20} tint="dark" style={StyleSheet.absoluteFillObject} />
-              <Breadcrumbs route={activeRoute} />
+              <Breadcrumbs route={activeRoute} onNavigate={handleNavigate} />
             </View>
           )}
 
@@ -619,9 +639,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#0f1419',
   },
+  gradientOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1,
+  },
   layoutContainer: {
     flex: 1,
     flexDirection: 'row',
+    zIndex: 2,
   },
   loadingContainer: {
     flex: 1,
@@ -851,15 +880,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 24,
   },
-  breadcrumbContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  breadcrumbText: {
-    color: 'rgba(255, 255, 255, 0.6)',
-    fontSize: 14,
-    fontWeight: '500',
-  },
+  // Breadcrumb component handles its own styles
   contentArea: {
     flex: 1,
     padding: 0,

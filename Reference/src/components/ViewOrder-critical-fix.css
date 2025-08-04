@@ -1,0 +1,126 @@
+/* CRITICAL: ViewOrder Dark Theme Text Fix */
+/* This file MUST load to make text visible */
+
+/* Root container - Force white text globally */
+#root .orderDetailContainer,
+#root [class*="orderDetailContainer"] {
+  color: #ffffff !important;
+}
+
+/* Override any inherited black text */
+#root .orderDetailContainer *:not(svg),
+#root [class*="orderDetailContainer"] *:not(svg) {
+  color: inherit;
+}
+
+/* Specific element overrides with maximum specificity */
+#root .orderDetailContainer h1,
+#root .orderDetailContainer h2,
+#root .orderDetailContainer h3,
+#root .orderDetailContainer h4,
+#root .orderDetailContainer h5,
+#root .orderDetailContainer h6 {
+  color: #ffffff !important;
+}
+
+#root .orderDetailContainer p,
+#root .orderDetailContainer span,
+#root .orderDetailContainer div,
+#root .orderDetailContainer td,
+#root .orderDetailContainer th {
+  color: inherit !important;
+}
+
+/* Labels - Light gray */
+#root [class*="label"]:not([class*="statusLabel"]) {
+  color: #8b98a5 !important;
+}
+
+/* Values - White */
+#root [class*="value"] {
+  color: #ffffff !important;
+}
+
+/* Table cells - Light gray */
+#root [class*="tableCell"] {
+  color: #e5e7eb !important;
+}
+
+/* Status elements */
+#root [class*="statusLabel"] {
+  color: #e5e7eb !important;
+}
+
+#root [class*="current"] [class*="statusLabel"] {
+  color: #79d5e9 !important;
+}
+
+/* Tracking and delivery */
+#root [class*="trackingNumber"] {
+  color: #ffffff !important;
+}
+
+#root [class*="deliveryDate"] {
+  color: #79d5e9 !important;
+}
+
+/* Customer info */
+#root [class*="infoGroup"] [class*="label"] {
+  color: #8b98a5 !important;
+}
+
+#root [class*="infoGroup"] [class*="value"] {
+  color: #ffffff !important;
+}
+
+/* Tabs */
+#root [class*="tab"]:not([class*="active"]) {
+  color: #8b98a5 !important;
+}
+
+#root [class*="tab"][class*="active"] {
+  color: #79d5e9 !important;
+}
+
+/* Summary rows */
+#root [class*="summaryRow"] span:first-child {
+  color: #8b98a5 !important;
+}
+
+#root [class*="summaryRow"] span:last-child {
+  color: #e5e7eb !important;
+}
+
+#root [class*="totalRow"] span {
+  color: #ffffff !important;
+}
+
+/* Buttons */
+#root .orderDetailContainer button {
+  color: #79d5e9 !important;
+}
+
+/* Override any inline styles */
+#root .orderDetailContainer [style*="color: black"] {
+  color: #ffffff !important;
+}
+
+#root .orderDetailContainer [style*="color: #000"] {
+  color: #ffffff !important;
+}
+
+#root .orderDetailContainer [style*="color:black"] {
+  color: #ffffff !important;
+}
+
+#root .orderDetailContainer [style*="color:#000"] {
+  color: #ffffff !important;
+}
+
+/* Force override theme variables if they're wrong */
+#root .orderDetailContainer {
+  --text-primary: #ffffff !important;
+  --text-secondary: #e5e7eb !important;
+  --text-tertiary: #8b98a5 !important;
+  --text-muted: #8b98a5 !important;
+}

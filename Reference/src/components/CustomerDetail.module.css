@@ -1,0 +1,758 @@
+/* CustomerDetail.module.css */
+
+.customerDetailContainer {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--background-light) !important;
+  min-height: 100vh;
+  color: var(--text-primary) !important;
+}
+
+/* Header */
+.detailHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color) !important;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(68, 131, 130, 0.1);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.backButton:hover {
+  background: rgba(68, 131, 130, 0.2);
+}
+
+.headerInfo h1 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary) !important;
+}
+
+.headerBadges {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.customerStatusBadge,
+.customerTypeBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.statusBadge.active {
+  background: var(--gradient-success) !important;
+  color: white;
+}
+
+.customerTypeBadge {
+  background: var(--gradient-secondary) !important;
+  color: white;
+}
+
+.headerActions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Financial Health Summary */
+.financialHealthSummary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.healthCard {
+  background: var(--background-white) !important;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+  border: 1px solid var(--border-color) !important;
+}
+
+.healthCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.healthMetric h3 {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.performanceScore {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.performanceScore.green {
+  color: var(--success-color) !important;
+}
+
+.performanceScore.yellow {
+  color: var(--warning-color) !important;
+}
+
+.performanceScore.red {
+  color: var(--error-color) !important;
+}
+
+.creditUsageBar {
+  width: 100%;
+  height: 20px;
+  background: rgba(31, 41, 55, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.usageFill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.usageFill.green {
+  background: var(--success-color) !important;
+}
+
+.usageFill.yellow {
+  background: var(--warning-color) !important;
+}
+
+.usageFill.red {
+  background: var(--error-color) !important;
+}
+
+.metricValue {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary) !important;
+  margin-bottom: 0.25rem;
+}
+
+.metricLabel {
+  font-size: 0.875rem;
+  color: var(--text-secondary) !important;
+}
+
+.outstandingAmount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
+  margin-bottom: 0.5rem;
+}
+
+.overdueWarning {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--error-color) !important;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.paymentTerms {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary) !important;
+}
+
+/* Tabs */
+.customerDetailTabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--border-color) !important;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary) !important;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: var(--text-primary) !important;
+}
+
+.tab.active {
+  color: var(--primary-color) !important;
+  border-bottom-color: var(--primary-color) !important;
+}
+
+/* Tab Content */
+.customerTabContent {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Overview Tab */
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.infoSection {
+  background: var(--background-white) !important;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color) !important;
+}
+
+.customerInfoSection h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.infoItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(75, 85, 99, 0.1);
+}
+
+.infoItem:last-child {
+  border-bottom: none;
+}
+
+.infoItem .label {
+  color: var(--text-secondary) !important;
+  font-size: 0.875rem;
+}
+
+.infoItem .value {
+  font-weight: 500;
+  color: var(--text-primary) !important;
+}
+
+/* Addresses Section */
+.addressesSection {
+  margin-top: 2rem;
+}
+
+.addressesSection h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary) !important;
+}
+
+.addressGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.addressCard {
+  background: var(--background-white) !important;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color) !important;
+}
+
+.addressCard h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-light) !important;
+}
+
+.addressCard p {
+  margin: 0.25rem 0;
+  color: var(--text-primary) !important;
+}
+
+/* AI Insights Section */
+.aiInsightsSection {
+  margin-top: 2rem;
+  background: var(--background-white) !important;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color) !important;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sectionHeader h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--text-primary) !important;
+  margin: 0;
+}
+
+/* Financial Tab */
+.financialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.financialCard {
+  background: var(--background-white) !important;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color) !important;
+}
+
+.financialCard h3 {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary) !important;
+}
+
+.financialItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(75, 85, 99, 0.1);
+}
+
+.financialItem:last-child {
+  border-bottom: none;
+}
+
+.financialItem .label {
+  color: var(--text-secondary) !important;
+}
+
+.financialItem .value {
+  font-weight: 600;
+  color: var(--text-primary) !important;
+}
+
+.financialItem .value.overdue {
+  color: var(--error-color) !important;
+}
+
+.overdueAlert {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: var(--error-color) !important;
+}
+
+.overdueAlert h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+}
+
+.overdueAlert p {
+  margin: 0 0 1rem 0;
+}
+
+/* Contacts Tab */
+.contactsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.contactCard {
+  background: var(--background-white) !important;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color) !important;
+}
+
+.contactHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.contactHeader h4 {
+  margin: 0;
+  font-size: 1.125rem;
+  color: var(--text-primary) !important;
+}
+
+.primaryBadge {
+  background: var(--gradient-primary) !important;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.contactInfo p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  color: var(--text-primary) !important;
+}
+
+.contactActions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Orders Tab */
+.ordersList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--background-white) !important;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+  border: 1px solid var(--border-color) !important;
+}
+
+.orderItem:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.orderInfo h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: var(--text-primary) !important;
+}
+
+.orderInfo p {
+  margin: 0;
+  color: var(--text-secondary) !important;
+  font-size: 0.875rem;
+}
+
+.orderAmount {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary) !important;
+}
+
+/* Status badges */
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status.green {
+  background: rgba(97, 188, 142, 0.1);
+  color: var(--success-color) !important;
+  border: 1px solid rgba(97, 188, 142, 0.3);
+}
+
+.status.yellow {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--warning-color) !important;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.status.red {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error-color) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btnPrimary {
+  background: var(--gradient-primary) !important;
+  color: white;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(26, 31, 42, 0.3);
+}
+
+.btnSecondary {
+  background: var(--gradient-secondary) !important;
+  color: white;
+}
+
+.btnSecondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(68, 131, 130, 0.3);
+}
+
+.btnWarning {
+  background: var(--gradient-warning) !important;
+  color: #1a1f2a;
+}
+
+.btnWarning:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(251, 191, 36, 0.3);
+}
+
+.btnSmall {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.fullWidth {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Loading State */
+.customerDetailLoading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: var(--text-secondary) !important;
+}
+
+/* Error State */
+.customerDetailError {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.customerDetailError h2 {
+  margin-bottom: 1rem;
+  color: var(--text-primary) !important;
+}
+
+/* iPad-specific styles */
+.ipadGrid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.ipadTabs {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.ipadTabScroll {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  min-width: max-content;
+}
+
+.ipadOptimized {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--ipad-border-radius);
+  transition: all 0.2s ease;
+}
+
+.ipadOptimized:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.ipadQuickActions {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--background-white);
+  border-radius: var(--ipad-border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.ipadQuickActions h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 1.125rem;
+}
+
+.quickActionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.quickActionBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(68, 131, 130, 0.1);
+  border: 1px solid rgba(68, 131, 130, 0.2);
+  border-radius: var(--ipad-border-radius);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 80px;
+  justify-content: center;
+}
+
+.quickActionBtn:hover {
+  background: rgba(68, 131, 130, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(68, 131, 130, 0.2);
+}
+
+.quickActionBtn svg {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .customerDetailContainer {
+    padding: 1rem;
+  }
+
+  .detailHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .headerInfo h1 {
+    font-size: 1.5rem;
+  }
+
+  .headerActions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .headerActions .btn {
+    width: 100%;
+  }
+
+  .financialHealthSummary {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .healthCard {
+    padding: 1rem;
+  }
+
+  .performanceScore {
+    font-size: 2.5rem;
+  }
+
+  .outstandingAmount {
+    font-size: 1.5rem;
+  }
+
+  .paymentTerms {
+    font-size: 1.25rem;
+  }
+
+  .customerDetailTabs {
+    gap: 0.25rem;
+  }
+
+  .tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .infoGrid,
+  .financialGrid,
+  .addressGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .infoSection,
+  .financialCard,
+  .addressCard,
+  .aiInsightsSection {
+    padding: 1rem;
+  }
+
+  .contactsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .orderItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}

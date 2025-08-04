@@ -1,0 +1,128 @@
+.segmentedGroup {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+  width: 100%;
+  padding: 4px;
+  gap: 4px;
+  
+  /* Enable container queries */
+  container-type: inline-size;
+  container-name: segmented-group;
+}
+
+.segmentedGroup.small {
+  height: 28px;
+}
+
+/* Container queries for segmented group */
+@container segmented-group (max-width: 200px) {
+  .segmentedGroup {
+    margin-left: 4px;
+    border-radius: 4px;
+  }
+}
+
+@container segmented-group (max-width: 150px) {
+  .segmentedGroup {
+    margin-left: 2px;
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .segmentedGroup.small {
+    height: auto;
+  }
+}
+
+.segmentedBtn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 40px;
+  outline: none;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+  
+  /* Enable container queries for buttons */
+  container-type: inline-size;
+}
+
+/* Container queries for segmented buttons */
+@container segmented-group (max-width: 250px) {
+  .segmentedBtn {
+    padding: 0 8px;
+    font-size: 12px;
+  }
+}
+
+@container segmented-group (max-width: 200px) {
+  .segmentedBtn {
+    padding: 0 6px;
+    font-size: 11px;
+  }
+}
+
+@container segmented-group (max-width: 150px) {
+  .segmentedBtn {
+    padding: 4px 8px;
+    font-size: 10px;
+    height: 24px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.segmentedBtn.active {
+  background: var(--primary-color);
+  color: var(--background-light);
+  font-weight: 600;
+}
+
+/* Remove border between buttons */
+.segmentedBtn:not(:last-child) {
+  border-right: none;
+}
+
+@container segmented-group (max-width: 150px) {
+  .segmentedBtn:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid #333;
+  }
+}
+
+.segmentedBtn:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.segmentedBtn:focus {
+  background: rgba(121, 213, 233, 0.2);
+  color: var(--primary-color);
+}
+
+/* Ultra-small adaptations */
+@container segmented-group (max-width: 100px) {
+  .segmentedBtn {
+    padding: 2px 4px;
+    font-size: 9px;
+    height: 20px;
+  }
+  
+  .segmentedBtn span {
+    display: none; /* Hide text, show only icons if available */
+  }
+}

@@ -16,10 +16,10 @@ import {
 import {
   TextInput,
   Button,
-  Text,
   HelperText,
   ActivityIndicator,
 } from 'react-native-paper';
+import { Text } from '../../components/ui/Typography';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { useNavigation } from '@react-navigation/native';

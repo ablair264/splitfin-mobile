@@ -1,12 +1,11 @@
 // src/navigation/MainNavigator.tsx
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useAuthStore } from '../store/authStore';
+import MasterLayout from '../layouts/MasterLayout';
 
-// Import screens (we'll create these next)
+// Import screens
 import DashboardScreen from '../screens/dashboard/DashboardScreen';
+import { DashboardOverviewScreen } from '../screens/dashboard/DashboardOverviewScreen';
 import ProductsScreen from '../screens/products/ProductsScreen';
 import ProductDetailScreen from '../screens/products/ProductDetailScreen';
 import CartScreen from '../screens/products/CartScreen';
@@ -14,146 +13,93 @@ import OrdersScreen from '../screens/orders/OrdersScreen';
 import OrderDetailScreen from '../screens/orders/OrderDetailScreen';
 import CustomersScreen from '../screens/customers/CustomersScreen';
 import CustomerDetailScreen from '../screens/customers/CustomerDetailScreen';
+import { InvoiceManagementScreen } from '../screens/invoices/InvoiceManagementScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import { ProductsInventoryScreen } from '../screens/products/ProductsInventoryScreen';
+import { CustomersManagementScreen } from '../screens/customers/CustomersManagementScreen';
+import PlaceholderScreen from '../components/PlaceholderScreen';
 
-// Stack navigators for each tab
-const DashboardStack = createNativeStackNavigator();
-const ProductsStack = createNativeStackNavigator();
-const OrdersStack = createNativeStackNavigator();
-const CustomersStack = createNativeStackNavigator();
-const ProfileStack = createNativeStackNavigator();
-
-function DashboardStackScreen() {
-  return (
-    <DashboardStack.Navigator>
-      <DashboardStack.Screen 
-        name="DashboardHome" 
-        component={DashboardScreen}
-        options={{ title: 'Dashboard' }}
-      />
-    </DashboardStack.Navigator>
-  );
-}
-
-function ProductsStackScreen() {
-  return (
-    <ProductsStack.Navigator>
-      <ProductsStack.Screen 
-        name="ProductsList" 
-        component={ProductsScreen}
-        options={{ title: 'Products' }}
-      />
-      <ProductsStack.Screen 
-        name="ProductDetail" 
-        component={ProductDetailScreen}
-        options={{ title: 'Product Details' }}
-      />
-      <ProductsStack.Screen 
-        name="Cart" 
-        component={CartScreen}
-        options={{ title: 'Shopping Cart' }}
-      />
-    </ProductsStack.Navigator>
-  );
-}
-
-function OrdersStackScreen() {
-  return (
-    <OrdersStack.Navigator>
-      <OrdersStack.Screen 
-        name="OrdersList" 
-        component={OrdersScreen}
-        options={{ title: 'Orders' }}
-      />
-      <OrdersStack.Screen 
-        name="OrderDetail" 
-        component={OrderDetailScreen}
-        options={{ title: 'Order Details' }}
-      />
-    </OrdersStack.Navigator>
-  );
-}
-
-function CustomersStackScreen() {
-  const { user } = useAuthStore();
-  
-  // Only show customers tab for sales agents and admins
-  if (user?.role === 'customer') {
-    return null;
-  }
-  
-  return (
-    <CustomersStack.Navigator>
-      <CustomersStack.Screen 
-        name="CustomersList" 
-        component={CustomersScreen}
-        options={{ title: 'Customers' }}
-      />
-      <CustomersStack.Screen 
-        name="CustomerDetail" 
-        component={CustomerDetailScreen}
-        options={{ title: 'Customer Details' }}
-      />
-    </CustomersStack.Navigator>
-  );
-}
-
-function ProfileStackScreen() {
-  return (
-    <ProfileStack.Navigator>
-      <ProfileStack.Screen 
-        name="ProfileHome" 
-        component={ProfileScreen}
-        options={{ title: 'Profile' }}
-      />
-    </ProfileStack.Navigator>
-  );
-}
-
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
-  const { user } = useAuthStore();
-  const isCustomer = user?.role === 'customer';
-
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName = 'home';
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {/* Dashboard Routes */}
+      <Stack.Screen name="Dashboard" component={DashboardScreen} />
+      <Stack.Screen name="DashboardHome" component={DashboardOverviewScreen} />
+      <Stack.Screen name="DashboardOrders" component={DashboardScreen} />
+      <Stack.Screen name="DashboardRevenue" component={DashboardScreen} />
+      
+      {/* Customer Routes */}
+      <Stack.Screen name="Customers" component={CustomersScreen} />
+      <Stack.Screen name="CustomersList" component={CustomersScreen} />
+      <Stack.Screen name="CustomersNew" component={CustomersManagementScreen} />
+      <Stack.Screen name="CustomersMap">
+        {() => <PlaceholderScreen title="Customer Map" />}
+      </Stack.Screen>
+      <Stack.Screen name="CustomerDetail" component={CustomerDetailScreen} />
+      
+      {/* Order Routes */}
+      <Stack.Screen name="Orders" component={OrdersScreen} />
+      <Stack.Screen name="OrdersList" component={OrdersScreen} />
+      <Stack.Screen name="OrdersNew">
+        {() => <PlaceholderScreen title="New Order" />}
+      </Stack.Screen>
+      <Stack.Screen name="OrdersPending">
+        {() => <PlaceholderScreen title="Pending Orders" />}
+      </Stack.Screen>
+      <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
+      
+      {/* Inventory Routes */}
+      <Stack.Screen name="Inventory" component={ProductsInventoryScreen} />
+      <Stack.Screen name="InventoryOverview" component={ProductsInventoryScreen} />
+      <Stack.Screen name="InventoryProducts" component={ProductsScreen} />
+      <Stack.Screen name="InventoryWarehouse">
+        {() => <PlaceholderScreen title="Warehouse" />}
+      </Stack.Screen>
+      
+      {/* Live Stocklists Routes */}
+      <Stack.Screen name="LiveStocklists">
+        {() => <PlaceholderScreen title="Live Stocklists" />}
+      </Stack.Screen>
+      <Stack.Screen name="StocklistBlomus">
+        {() => <PlaceholderScreen title="Blomus Stocklist" />}
+      </Stack.Screen>
+      <Stack.Screen name="StocklistElvang">
+        {() => <PlaceholderScreen title="Elvang Stocklist" />}
+      </Stack.Screen>
+      <Stack.Screen name="StocklistGefu">
+        {() => <PlaceholderScreen title="GEFU Stocklist" />}
+      </Stack.Screen>
+      
+      {/* Agent Management Routes */}
+      <Stack.Screen name="Agents">
+        {() => <PlaceholderScreen title="Agent Management" />}
+      </Stack.Screen>
+      
+      {/* Settings Routes */}
+      <Stack.Screen name="Settings" component={ProfileScreen} />
+      <Stack.Screen name="SettingsGeneral" component={ProfileScreen} />
+      <Stack.Screen name="SettingsProfile" component={ProfileScreen} />
+      <Stack.Screen name="SettingsSecurity">
+        {() => <PlaceholderScreen title="Security Settings" />}
+      </Stack.Screen>
+      
+      {/* Other Routes */}
+      <Stack.Screen name="Products" component={ProductsScreen} />
+      <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+      <Stack.Screen name="Cart" component={CartScreen} />
+      <Stack.Screen name="Invoices" component={InvoiceManagementScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+    </Stack.Navigator>
+  );
+}
 
-          switch (route.name) {
-            case 'Dashboard':
-              iconName = focused ? 'dashboard' : 'dashboard';
-              break;
-            case 'Products':
-              iconName = focused ? 'inventory' : 'inventory-2';
-              break;
-            case 'Orders':
-              iconName = focused ? 'receipt' : 'receipt-long';
-              break;
-            case 'Customers':
-              iconName = focused ? 'people' : 'people-outline';
-              break;
-            case 'Profile':
-              iconName = focused ? 'person' : 'person-outline';
-              break;
-          }
-
-          return <Icon name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: '#007AFF',
-        tabBarInactiveTintColor: '#8E8E93',
-        headerShown: false,
-      })}
-    >
-      <Tab.Screen name="Dashboard" component={DashboardStackScreen} />
-      <Tab.Screen name="Products" component={ProductsStackScreen} />
-      <Tab.Screen name="Orders" component={OrdersStackScreen} />
-      {!isCustomer && (
-        <Tab.Screen name="Customers" component={CustomersStackScreen} />
-      )}
-      <Tab.Screen name="Profile" component={ProfileStackScreen} />
-    </Tab.Navigator>
+// Wrapper component that wraps all screens with MasterLayout
+export function MainNavigatorWithLayout() {
+  return (
+    <MasterLayout>
+      <MainNavigator />
+    </MasterLayout>
   );
 }

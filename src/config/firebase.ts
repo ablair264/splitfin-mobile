@@ -1,7 +1,6 @@
 // src/config/firebase.ts
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import storage from '@react-native-firebase/storage';
 
 // Firebase is configured through native configuration files:
 // - android/app/google-services.json
@@ -14,7 +13,7 @@ firestore().settings({
 });
 
 // Export Firebase services
-export { auth, firestore, storage };
+export { auth, firestore };
 
 // Helper function to get the current user
 export const getCurrentUser = () => auth().currentUser;

@@ -15,7 +15,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.splitfin.mobile",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -32,7 +35,19 @@
     "plugins": [
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
-      "@react-native-firebase/firestore"
-    ]
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "3fb3968d-eb0f-4cb3-b730-d0b69a71825f"
+      }
+    }
   }
 }

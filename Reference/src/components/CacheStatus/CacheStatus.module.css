@@ -1,0 +1,102 @@
+.cacheStatus {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 100;
+}
+
+.toggleButton {
+  background: rgba(26, 31, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.813rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.toggleButton:hover {
+  background: rgba(26, 31, 42, 0.98);
+  border-color: #79d5e9;
+  color: #79d5e9;
+}
+
+.expandedContent {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 0.5rem;
+  background: rgba(26, 31, 42, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  min-width: 300px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.expandedContent h4 {
+  margin: 0 0 1rem 0;
+  color: #79d5e9;
+  font-size: 0.875rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat label {
+  font-size: 0.688rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.stat span {
+  font-size: 0.813rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(135deg, #79d5e9 0%, #4daeac 100%);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.clearButton {
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background: rgba(239, 68, 68, 0.2);
+  transform: translateY(-1px);
+}

@@ -1,0 +1,73 @@
+/* Emergency fix for ViewOrder text colors */
+/* Add this to your ViewOrder component temporarily */
+
+/* Force text colors for ViewOrder component */
+[class*="orderDetailContainer"] * {
+  color: inherit !important;
+}
+
+/* Specific text color fixes */
+[class*="orderDetailContainer"] {
+  color: #ffffff !important;
+}
+
+[class*="orderNumber"] {
+  color: #ffffff !important;
+}
+
+[class*="cardLabel"],
+[class*="label"] {
+  color: #8b98a5 !important;
+}
+
+[class*="value"],
+[class*="trackingNumber"],
+[class*="deliveryDate"] {
+  color: #ffffff !important;
+}
+
+[class*="statusLabel"] {
+  color: #e5e7eb !important;
+}
+
+[class*="statusStep"].current [class*="statusLabel"] {
+  color: #79d5e9 !important;
+}
+
+[class*="tableCell"] {
+  color: #e5e7eb !important;
+}
+
+[class*="itemInfo"] strong {
+  color: #ffffff !important;
+}
+
+[class*="itemBrand"] {
+  color: #8b98a5 !important;
+}
+
+[class*="summaryRow"] span:last-child {
+  color: #e5e7eb !important;
+}
+
+[class*="summaryRow"].totalRow span {
+  color: #ffffff !important;
+}
+
+/* Ensure all text in cards is visible */
+[class*="statusCard"] *,
+[class*="courierCard"] *,
+[class*="shippingCard"] *,
+[class*="customerDetailsCard"] *,
+[class*="orderItemsCard"] * {
+  color: inherit;
+}
+
+/* Tab colors */
+[class*="tab"] {
+  color: #8b98a5 !important;
+}
+
+[class*="tab"].active {
+  color: #79d5e9 !important;
+}

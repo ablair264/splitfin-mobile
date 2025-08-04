@@ -1,0 +1,64 @@
+/* Dashboard CSS Variables - Single source of truth */
+:root {
+  /* Primary Colors */
+  --primary-color: #79d5e9;
+  --primary-dark: #1a1f2a;
+  --secondary-color: #4daeac;
+  --accent-color: #61bc8e;
+  --accent-cta: #fbbf24;
+  
+  /* Background Colors */
+  --background-light: #0f1419;
+  --background-white: #1a1f2a;
+  --bg-secondary: rgba(255, 255, 255, 0.05);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-light: #e5e7eb;
+  
+  /* Border & Effects */
+  --border-color: rgba(255, 255, 255, 0.1);
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.3);
+  
+  /* Status Colors */
+  --success-color: #61bc8e;
+  --warning-color: #fbbf24;
+  --error-color: #dc2626;
+  --info-color: #79d5e9;
+  
+  /* Status Backgrounds */
+  --warning-bg: rgba(251, 191, 36, 0.1);
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --info-bg: rgba(121, 213, 233, 0.1);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #191e29 0%, #5d7784 100%);
+  --gradient-accent: linear-gradient(135deg, #79d5e9 0%, #4daeac 100%);
+  
+  /* Chart Colors */
+  --chart-colors-default: #48B79B, #6B8E71, #8B7355, #A66B6B, #7B9EA6, #9B7B8F;
+  --chart-colors-multicolored: #79d5e9, #f77d11, #4daeac, #61bc8e, #fbbf24, #dc2626, #8b5cf6, #ec4899;
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-full: 9999px;
+}
+
+/* Dark mode adjustments (if needed) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* All variables already set for dark mode */
+  }
+}

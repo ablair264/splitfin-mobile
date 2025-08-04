@@ -1,0 +1,193 @@
+/* OverviewView.css - Wide screen enhancements */
+
+/* Wide screen layout - Make cards wider while keeping 3x3 grid */
+@media (min-width: 1600px) {
+  .overview-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  
+  .metrics-grid {
+    gap: 24px !important;
+    margin-bottom: 32px !important;
+  }
+  
+  /* Wider metric cards on large screens */
+  .metrics-grid > div {
+    min-width: 450px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .overview-container {
+    max-width: 1800px;
+  }
+  
+  .metrics-grid > div {
+    min-width: 520px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .overview-container {
+    max-width: 2200px;
+  }
+  
+  .metrics-grid {
+    gap: 32px !important;
+  }
+  
+  .metrics-grid > div {
+    min-width: 650px;
+  }
+}
+
+/* Comparison data styles */
+.comparison-data {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.comparison-label {
+  font-weight: 500;
+}
+
+.comparison-value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.comparison-change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.comparison-change.positive {
+  color: var(--accent-color);
+}
+
+.comparison-change.negative {
+  color: var(--error-color);
+}
+
+/* Drill-down indicator */
+.drill-down-indicator {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--primary-color);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: rgba(121, 213, 233, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(121, 213, 233, 0.2);
+}
+
+.metric-card-enhanced:hover .drill-down-indicator,
+.metricCardFull:hover .drill-down-indicator {
+  opacity: 1;
+}
+
+/* Drill-down menu */
+.drill-down-menu {
+  position: absolute;
+  top: 48px;
+  right: 12px;
+  background: var(--background-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  min-width: 200px;
+}
+
+.drill-down-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.drill-down-item:hover {
+  background: var(--hover-bg);
+  color: var(--primary-color);
+}
+
+.drill-down-item-icon {
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.drill-down-item-label {
+  flex: 1;
+}
+
+.drill-down-item-hint {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Enhanced metric card header for drill-down */
+.metric-header-enhanced {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.metric-title-section {
+  flex: 1;
+}
+
+.metric-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Chart and table grid adjustments for wider screens */
+@media (min-width: 1600px) {
+  .card-charts-grid,
+  .card-tables-grid {
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  
+  .full-graph-container {
+    margin-top: 32px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .card-charts-grid,
+  .card-tables-grid {
+    gap: 32px;
+  }
+}

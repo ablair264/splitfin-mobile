@@ -1,0 +1,263 @@
+/* src/components/ThemeSelector/ThemeSelector.css */
+
+.theme-selector {
+  position: relative;
+}
+
+.theme-selector-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+  min-height: 36px;
+}
+
+.theme-selector-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-color);
+}
+
+.theme-icon {
+  font-size: 1rem;
+  color: var(--accent-color);
+}
+
+.theme-label {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .theme-label {
+    display: inline;
+  }
+}
+
+/* Dropdown */
+.theme-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: 320px;
+  max-height: 500px;
+  overflow-y: auto;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+/* Embedded mode positioning */
+.theme-dropdown-from-settings {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  left: auto;
+  width: 320px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-dropdown-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.theme-dropdown-header h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.theme-dropdown-header p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Theme Sections */
+.theme-section {
+  padding: 1rem;
+}
+
+.theme-section + .theme-section {
+  border-top: 1px solid var(--border-primary);
+}
+
+.theme-section-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.theme-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Theme Option */
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.theme-option:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-primary);
+}
+
+.theme-option.active {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-color);
+}
+
+/* Color Preview */
+.theme-preview {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border-primary);
+  transition: transform 0.2s ease;
+}
+
+.theme-option:hover .color-swatch {
+  transform: scale(1.1);
+}
+
+.theme-name {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.theme-check {
+  color: var(--accent-color);
+  font-size: 0.875rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .theme-dropdown,
+  .theme-dropdown-from-settings {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 70vh;
+    border-radius: 12px 12px 0 0;
+    animation: slideUp 0.3s ease;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .theme-selector-toggle {
+    min-height: 44px;
+    padding: 0.75rem;
+  }
+
+  .theme-icon {
+    font-size: 1.25rem;
+  }
+}
+
+/* Scrollbar styling */
+.theme-dropdown::-webkit-scrollbar,
+.theme-dropdown-from-settings::-webkit-scrollbar {
+  width: 6px;
+}
+
+.theme-dropdown::-webkit-scrollbar-track,
+.theme-dropdown-from-settings::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.theme-dropdown::-webkit-scrollbar-thumb,
+.theme-dropdown-from-settings::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 3px;
+}
+
+.theme-dropdown::-webkit-scrollbar-thumb:hover,
+.theme-dropdown-from-settings::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Header-specific overrides */
+.master-header-actions .theme-selector-toggle {
+  padding: 0.5rem;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.master-header-actions .theme-selector-toggle .theme-label {
+  display: none;
+}
+
+/* Mobile nav footer specific */
+.master-mobile-nav-footer .theme-selector {
+  width: 100%;
+}
+
+.master-mobile-nav-footer .theme-selector-toggle {
+  width: 100%;
+  justify-content: center;
+}
+
+.master-mobile-nav-footer .theme-selector-toggle .theme-label {
+  display: inline;
+}

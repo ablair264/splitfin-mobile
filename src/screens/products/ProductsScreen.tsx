@@ -1,7 +1,7 @@
 // src/screens/products/ProductsScreen.tsx
 import React from 'react';
-import PlaceholderScreen from '../../components/PlaceholderScreen';
+import { ProductsInventoryScreen } from './ProductsInventoryScreen';
 
 export default function ProductsScreen() {
-  return <PlaceholderScreen title="Products" />;
+  return <ProductsInventoryScreen />;
 }

@@ -1,0 +1,339 @@
+/* Enhanced ViewOrders Table Design */
+
+/* 1. Enhanced Table Container with subtle gradient border */
+.ordersTableContainer {
+  background: linear-gradient(145deg, #1a1f2a 0%, #161922 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+/* 2. Sticky header with glassmorphism effect */
+.tableHeader {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(42, 52, 65, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableHeader .tableRow {
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+/* 3. Enhanced table rows with hover effects */
+.tableRow {
+  display: grid;
+  grid-template-columns: 120px 200px 120px 120px 100px 80px 120px;
+  gap: 16px;
+  padding: 20px 24px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Subtle alternating row colors */
+.tableBody .tableRow:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+/* Enhanced hover state */
+.tableBody .tableRow:hover {
+  background: linear-gradient(90deg, 
+    rgba(121, 213, 233, 0.05) 0%, 
+    rgba(77, 174, 172, 0.05) 100%);
+  transform: translateX(4px);
+  box-shadow: 
+    inset 3px 0 0 #79d5e9,
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Enhanced Order Number styling */
+.tableCell:first-child strong {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 14px;
+  color: #79d5e9;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* 5. Customer info with avatar placeholder */
+.customerInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.customerAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #79d5e9 0%, #4daeac 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0a0e1a;
+  flex-shrink: 0;
+}
+
+.customerDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.customerDetails strong {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.companyName {
+  font-size: 12px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.companyIcon {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* 6. Enhanced date display */
+.dateCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dateMain {
+  font-size: 14px;
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.dateTime {
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* 7. Enhanced total amount */
+.totalAmount {
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 8. Redesigned status badges */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.statusBadge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.tableRow:hover .statusBadge::before {
+  transform: translateX(100%);
+}
+
+.statusIcon {
+  font-size: 10px;
+}
+
+.statusClosed {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(74, 222, 128, 0.2) 100%);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.statusDraft {
+  background: linear-gradient(135deg, rgba(156, 163, 175, 0.2) 0%, rgba(209, 213, 219, 0.2) 100%);
+  color: #d1d5db;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.statusOpen {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(252, 211, 77, 0.2) 100%);
+  color: #fcd34d;
+  border: 1px solid rgba(252, 211, 77, 0.3);
+}
+
+/* 9. Items count with icon */
+.itemsCount {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.itemsIcon {
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+/* 10. Redesigned action buttons */
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+/* Glass effect for action buttons */
+.actionBtn {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+}
+
+.actionBtn:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.viewBtn:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(96, 165, 250, 0.2) 100%);
+  color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
+}
+
+.invoiceBtn:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(74, 222, 128, 0.2) 100%);
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.3);
+  box-shadow: 0 8px 16px rgba(34, 197, 94, 0.2);
+}
+
+/* Tooltip for action buttons */
+.actionBtn::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.actionBtn:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* 11. Loading skeleton animation */
+.loadingSkeleton {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.05) 25%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    rgba(255, 255, 255, 0.05) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* 12. Add row number indicator */
+.rowNumber {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 30px;
+  background: linear-gradient(180deg, #79d5e9 0%, #4daeac 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tableRow:hover .rowNumber {
+  opacity: 1;
+}
+
+/* 13. Enhanced search input */
+.searchInput {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.searchInput:focus {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 0 0 3px rgba(121, 213, 233, 0.1),
+    inset 0 0 20px rgba(121, 213, 233, 0.05);
+}
+
+/* 14. Filter dropdown enhancement */
+.statusFilter {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.statusFilter:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(121, 213, 233, 0.3);
+}

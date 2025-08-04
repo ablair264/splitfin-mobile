@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "435717447836",
+    "firebase_url": "https://splitfin-609c9-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "splitfin-609c9",
+    "storage_bucket": "splitfin-609c9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435717447836:android:53c1dceeeb493df0220d59",
+        "android_client_info": {
+          "package_name": "com.splitfin.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435717447836-f54s4ed6977ov8et2n3jrk3p9ru609q2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi6h8kK8XPQmXNwwyVATOjyuyxPuyXXls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435717447836-f54s4ed6977ov8et2n3jrk3p9ru609q2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

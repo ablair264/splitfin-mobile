@@ -1,0 +1,99 @@
+/* InventoryOverview.css */
+.inventory-overview {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.overview-header {
+  margin-bottom: 32px;
+}
+
+.overview-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Metric Cards Container */
+.metric-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+/* Tables Container */
+.tables-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 24px;
+}
+
+.table-wrapper {
+  min-height: 400px;
+}
+
+/* Loading State */
+.inventory-overview-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .metric-cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .inventory-overview {
+    padding: 16px;
+  }
+
+  .overview-header h1 {
+    font-size: 24px;
+  }
+
+  .metric-cards-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .tables-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .table-wrapper {
+    min-height: auto;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .overview-header h1 {
+    color: #f3f4f6;
+  }
+
+  .inventory-overview-loading p {
+    color: #9ca3af;
+  }
+}

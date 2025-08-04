@@ -1,0 +1,715 @@
+/* OrderDetail.module.css - Dark Theme */
+
+.orderDetailContainer {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #0f1419;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+/* Header Section */
+.detailHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #79d5e9;
+  color: #ffffff;
+}
+
+.headerInfo {
+  flex: 1;
+  text-align: center;
+}
+
+.headerInfo h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.headerBadges {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.statusBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statusBadge.green {
+  background: rgba(5, 150, 105, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(5, 150, 105, 0.3);
+}
+
+.statusBadge.yellow {
+  background: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.statusBadge.red {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.marketplaceBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 153, 0, 0.1);
+  color: #ff9900;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 153, 0, 0.3);
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Summary Cards */
+.orderSummaryCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ordviewSummaryCard {
+  background: #1a1f2a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cardMetric h3 {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.75rem 0;
+}
+
+.metricValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #79d5e9 0%, #4daeac 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.metricLabel {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.statusIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.statusIndicator.green {
+  color: #10b981;
+}
+
+.statusIndicator.yellow {
+  color: #fbbf24;
+}
+
+.statusIndicator.red {
+  color: #ef4444;
+}
+
+.overdueWarning {
+  color: #ef4444;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+.fulfillmentBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.fulfillmentProgress {
+  height: 100%;
+  background: linear-gradient(135deg, #79d5e9 0%, #4daeac 100%);
+  transition: width 0.3s ease;
+}
+
+/* Tabs */
+.orderDetailTabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 2rem;
+}
+
+.orderTab {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.orderTab:hover {
+  color: #ffffff;
+}
+
+.orderTab.active {
+  color: #79d5e9;
+}
+
+.orderTab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #79d5e9;
+}
+
+/* Tab Content */
+.orderTabContent {
+  background: #1a1f2a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.orderTabContent h3 {
+  font-size: 1.125rem;
+  color: #ffffff;
+  margin: 1.5rem 0 1rem;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.orderInfoSection h3,
+.orderTabContent h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+}
+
+.orderInfoItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.orderInfoItem:last-child {
+  border-bottom: none;
+}
+
+.orderLabel {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+.orderValue {
+  font-size: 0.875rem;
+  color: #ffffff;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* Timeline */
+.orderTimeline {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #1a1f2a;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.orderTimeline h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+}
+
+.timelineItems {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timelineItems::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: -25px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border: 2px solid #1a1f2a;
+}
+
+.timelineItem.completed .timelineMarker {
+  background: #79d5e9;
+}
+
+.timelineContent h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.25rem 0;
+}
+
+.timelineContent p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* Tables */
+.itemsTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 0.5rem;
+}
+
+.itemsTable th {
+  text-align: left;
+  padding: 0.75rem;
+  background: #0f0f0f;
+  font-size: 0.813rem;
+  font-weight: 600;
+  color: #9ca3af;
+  border-bottom: 2px solid #2d2d2d;
+}
+
+.itemsTable td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #2d2d2d;
+  font-size: 0.875rem;
+  color: #e5e7eb;
+}
+
+.itemsTable tbody tr:hover {
+  background: rgba(141, 128, 137, 0.1);
+}
+
+.itemsTable tfoot td {
+  padding: 1rem 0.75rem;
+  background: #0f0f0f;
+  color: #e5e7eb;
+  border-top: 2px solid #2d2d2d;
+}
+
+/* Tab specific styles */
+.overviewTab {
+  /* Additional styles for overview tab */
+}
+
+.itemsTab {
+  /* Additional styles for items tab */
+}
+
+.shippingTab {
+  /* Additional styles for shipping tab */
+}
+
+.financialTab {
+  /* Additional styles for financial tab */
+}
+
+/* Shipping and Financial Grids */
+.shippingGrid,
+.financialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.shippingSection,
+.addressSection,
+.financialCard {
+  background: #21263f;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.addressCard {
+  background: #1a1f2a;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+
+.addressCard p {
+  margin: 0.25rem 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.financialItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.financialItem:last-child {
+  border-bottom: none;
+}
+
+.financialItem .label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.financialItem .value {
+  color: #ffffff;
+}
+
+.financialItem .value.overdue {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* Overdue Alert */
+.orderOverdueAlert {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #1a1f2a;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+}
+
+.orderOverdueAlert svg {
+  font-size: 1.5rem;
+  color: #ef4444;
+}
+
+.orderOverdueAlert h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ef4444;
+  margin: 0 0 0.25rem 0;
+}
+
+.orderOverdueAlert p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 0.75rem 0;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, #79d5e9 0%, #4daeac 100%);
+  color: #0f1419;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(121, 213, 233, 0.3);
+}
+
+.btnSecondary {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #79d5e9;
+  color: #ffffff;
+}
+
+.btnWarning {
+  background: #f59e0b;
+  color: #0f1419;
+}
+
+.btnWarning:hover {
+  background: #fbbf24;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(251, 191, 36, 0.3);
+}
+
+.btnSmall {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.btnDanger {
+  background: #dc2626;
+  color: white;
+}
+
+.btnDanger:hover {
+  background: #ef4444;
+}
+
+.btnSuccess {
+  background: #059669;
+  color: white;
+}
+
+.btnSuccess:hover {
+  background: #10b981;
+}
+
+/* Button states */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+  transform: none;
+  background: initial;
+}
+
+/* Loading state for buttons */
+.btnLoading {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btnLoading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Transparent loader overlay */
+.buttonLoaderOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.buttonLoaderContent {
+  text-align: center;
+  color: #ffffff;
+}
+
+.buttonLoaderContent p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Loading and Error States */
+.orderDetailLoading,
+.orderDetailError {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+}
+
+.orderDetailError h2 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.orderDetailLoading p,
+.orderDetailError p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #79d5e9;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Ensure all text elements inherit white color */
+.orderDetailContainer * {
+  color: inherit;
+}
+
+/* Specific color overrides for special elements */
+.orderDetailContainer h1,
+.orderDetailContainer h2,
+.orderDetailContainer h3,
+.orderDetailContainer h4,
+.orderDetailContainer h5,
+.orderDetailContainer h6 {
+  color: #ffffff;
+}
+
+.orderDetailContainer p,
+.orderDetailContainer span,
+.orderDetailContainer div {
+  color: inherit;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .orderDetailContainer {
+    padding: 1rem;
+  }
+  
+  .detailHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .headerInfo {
+    text-align: left;
+  }
+  
+  .headerBadges {
+    justify-content: flex-start;
+  }
+  
+  .orderSummaryCards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .orderDetailTabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .orderTab {
+    white-space: nowrap;
+  }
+  
+  .infoGrid,
+  .shippingGrid,
+  .financialGrid {
+    grid-template-columns: 1fr;
+  }
+}

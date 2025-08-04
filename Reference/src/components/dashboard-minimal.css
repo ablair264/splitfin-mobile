@@ -1,0 +1,538 @@
+/* Dashboard Minimal CSS - Layout Only */
+/* This file contains only dashboard-specific layout styles without component conflicts */
+
+/* CSS Variables for Dark Theme */
+:root {
+  --primary-color: #79d5e9;
+  --primary-dark: #1a1f2a;
+  --secondary-color: #4daeac;
+  --accent-color: #61bc8e;
+  --accent-cta: #fbbf24;
+  --background-light: #0f1419;
+  --background-white: #1a1f2a;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-light: #e5e7eb;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --error-color: #dc2626;
+  --success-color: #61bc8e;
+  --warning-color: #fbbf24;
+}
+
+/* Dashboard Wrapper */
+.dashboard-wrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+/* Ensure settings badge has space */
+.dashboard-wrapper.with-settings-badge {
+  /* Add padding to avoid content overlap with fixed badge */
+  padding-top: 0;
+}
+
+/* Dashboard Container */
+.enhanced-dashboard {
+  min-height: 100vh;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  padding: 0;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .enhanced-dashboard {
+    padding: 1.5rem;
+  }
+}
+
+/* Temporary visibility fixes */
+.overview-container,
+.overview-view {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  opacity: 1 !important; /* Ensure visibility */
+}
+
+/* Ensure cards have visible borders */
+.metric-card-full,
+.metric-card-compact,
+.card-chart-container,
+.card-table-container,
+.full-graph-container {
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Brand Manager View Specific */
+.enhanced-dashboard.brand-manager-view {
+  position: relative;
+}
+
+/* Page Header */
+.dashboard-page-header {
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-page-header .page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+
+
+/* View Content Container */
+.view-content {
+  padding: 0;
+  animation: fadeIn 0.15s ease;
+  opacity: 1; /* Changed from 0 to 1 to ensure visibility */
+  animation-fill-mode: forwards;
+  background: transparent;
+  min-height: calc(100vh - 100px);
+}
+
+/* Ensure views are visible */
+.overview-view,
+.orders-view,
+.revenue-view,
+.invoices-view,
+.brands-view,
+.forecasting-view {
+  width: 100%;
+  padding: 0;
+  background: transparent;
+}
+
+/* Overview container */
+.overview-container {
+  width: 100%;
+  padding: 0;
+  background: transparent;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* View Transition */
+.view-content.fade-out {
+  animation: fadeOut 0.15s ease;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Remove slide animation */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Loading States */
+.dashboard-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--background-light);
+  color: var(--text-primary);
+}
+
+.loading-content {
+  text-align: center;
+}
+
+/* Error States */
+.dashboard-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--background-light);
+}
+
+.error-content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.retry-button {
+  background: var(--gradient-accent);
+  color: var(--background-light);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.retry-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(121, 213, 233, 0.3);
+}
+
+/* Modal Overlay and Content - AI Insights Modal Only */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: var(--background-white);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.ai-insight-modal {
+  max-width: 700px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: var(--hover-bg);
+  color: var(--text-primary);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* AI Insight Specific Styles */
+.insight-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: 1rem;
+}
+
+.insight-loading p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.insight-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.insight-section h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.insight-section p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.action-text {
+  background: var(--hover-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary-color);
+}
+
+.insight-meta {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.insight-meta span {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.priority.low {
+  background: rgba(97, 188, 142, 0.1);
+  color: var(--success-color);
+}
+
+.priority.medium {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--warning-color);
+}
+
+.priority.high {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--error-color);
+}
+
+.impact {
+  background: rgba(121, 213, 233, 0.1);
+  color: var(--primary-color);
+}
+
+/* Responsive */
+/* Invoice Table Fixes */
+.invoices-table-container th {
+  background: var(--background-white) !important;
+  color: var(--text-secondary) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.invoices-table-container .enhanced-table th {
+  background: var(--hover-bg) !important;
+}
+
+/* Status Badge Fixes */
+.status-badge {
+  display: inline-flex !important;
+  align-items: center;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  white-space: nowrap !important;
+  min-width: 60px;
+  justify-content: center;
+}
+
+.status-badge.paid {
+  background: rgba(97, 188, 142, 0.1);
+  color: var(--success-color);
+  border: 1px solid rgba(97, 188, 142, 0.3);
+}
+
+.status-badge.pending {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--warning-color);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.status-badge.overdue {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--error-color);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+/* Table Container Fixes */
+.orders-table-container,
+.invoices-table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--background-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.enhanced-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.enhanced-table th {
+  background: var(--hover-bg);
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.enhanced-table td {
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-light);
+}
+
+.enhanced-table tbody tr {
+  transition: background 0.2s;
+}
+
+.enhanced-table tbody tr:hover {
+  background: var(--hover-bg);
+}
+
+/* Ensure metrics grid is visible */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.metrics-grid.compact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Full graph container */
+.full-graph-container {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+/* Card grids */
+.card-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.card-tables-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .dashboard-page-header {
+    padding: 1rem;
+  }
+  
+  .dashboard-page-header .page-title {
+    font-size: 1.5rem;
+  }
+  
+  .modal-overlay {
+    padding: 1rem;
+  }
+  
+  .modal-content {
+    max-height: 90vh;
+    border-radius: 12px;
+  }
+  
+  .modal-header {
+    padding: 1rem;
+  }
+  
+  .modal-header h3 {
+    font-size: 1rem;
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .error-icon {
+    font-size: 2.5rem;
+  }
+  
+  .orders-table-container,
+  .invoices-table-container {
+    margin: 0 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .enhanced-table th,
+  .enhanced-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.813rem;
+  }
+  
+  .card-charts-grid,
+  .card-tables-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 0 1rem 1.5rem 1rem;
+  }
+  
+  .metrics-grid.compact-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}

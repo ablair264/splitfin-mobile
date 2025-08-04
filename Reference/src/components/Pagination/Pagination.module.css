@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 20px 0;
+}
+
+.pageItem {
+  margin: 0 5px;
+}
+
+.pageLink {
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #337ab7;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pageLink:hover:not(:disabled) {
+  background-color: #eee;
+}
+
+.pageLink:disabled {
+  color: #aaa;
+  cursor: not-allowed;
+  border-color: #eee;
+}
+
+.pageLink.active {
+  background-color: #337ab7;
+  color: white;
+  border-color: #337ab7;
+}

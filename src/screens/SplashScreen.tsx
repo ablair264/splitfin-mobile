@@ -1,13 +1,40 @@
 // src/screens/SplashScreen.tsx
-import React from 'react';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { Text } from 'react-native-paper';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { ProgressLoader } from '../components/ui';
+import { theme } from '../theme';
 
 export default function SplashScreen() {
+  const [progress, setProgress] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 90) {
+          clearInterval(interval);
+          return 90;
+        }
+        return prev + 10;
+      });
+    }, 200);
+    
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Splitfin</Text>
-      <ActivityIndicator size="large" color="#007AFF" style={styles.loader} />
+      <ProgressLoader
+        progress={progress}
+        message="Loading Splitfin..."
+        messages={[
+          "Loading Splitfin...",
+          "Connecting to services...",
+          "Preparing your dashboard...",
+          "Almost ready..."
+        ]}
+        size={120}
+        fullscreen={true}
+      />
     </View>
   );
 }
@@ -15,17 +42,6 @@ export default function SplashScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-  },
-  title: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: '#007AFF',
-    marginBottom: 20,
-  },
-  loader: {
-    marginTop: 20,
+    backgroundColor: theme.colors.background.primary,
   },
 });

@@ -1,0 +1,1063 @@
+/* CustomerOrderView.module.css - Customer-specific styling with Rosewood & Mauve theme */
+
+.orderDetailContainer {
+  min-height: 100vh;
+  background: #faf8f9;
+  padding: 24px;
+  position: relative;
+  animation: fadeIn 0.5s ease;
+  color: #2d1b20;
+}
+
+/* Specific overrides for elements that should have different colors */
+.orderDetailContainer .statusIcon {
+  color: inherit;
+}
+
+.orderDetailContainer .trackingNumber {
+  color: #2d1b20;
+}
+
+.orderDetailContainer .deliveryDate {
+  color: #c58390;
+}
+
+.orderDetailContainer .itemBrand {
+  color: #c58390;
+}
+
+.orderDetailContainer .discount {
+  color: #6b8e6b;
+}
+
+/* Ensure proper text color inheritance */
+.orderDetailContainer h1,
+.orderDetailContainer h2,
+.orderDetailContainer h3,
+.orderDetailContainer h4,
+.orderDetailContainer h5,
+.orderDetailContainer h6,
+.orderDetailContainer p,
+.orderDetailContainer span,
+.orderDetailContainer div,
+.orderDetailContainer td,
+.orderDetailContainer th {
+  color: inherit;
+}
+
+/* Animated background overlay */
+.orderDetailContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(197, 131, 144, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(150, 82, 81, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(107, 76, 107, 0.06) 0%, transparent 60%);
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.orderHeader {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 10;
+  animation: slideDown 0.6s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.orderHeader h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2d1b20 !important;
+  margin: 0;
+  flex: 1;
+  background: linear-gradient(135deg, #c58390 0%, #965251 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: white;
+  border: 2px solid #ede5e7;
+  border-radius: 12px;
+  color: #c58390 !important;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.backButton svg {
+  color: #c58390 !important;
+}
+
+.backButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(197, 131, 144, 0.1) 0%, rgba(150, 82, 81, 0.1) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.backButton:hover {
+  border-color: #c58390;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 12px rgba(197, 131, 144, 0.2);
+}
+
+.backButton:hover::before {
+  transform: translateX(0);
+}
+
+.headerActions {
+  display: flex;
+  gap: 12px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: white;
+  border: 2px solid #ede5e7;
+  border-radius: 12px;
+  color: #c58390 !important;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.actionButton svg {
+  color: #c58390 !important;
+}
+
+.actionButton:hover {
+  background: linear-gradient(135deg, rgba(197, 131, 144, 0.08) 0%, rgba(150, 82, 81, 0.08) 100%);
+  border-color: #c58390;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(197, 131, 144, 0.2);
+}
+
+/* Top Cards Row */
+.topCardsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  gap: 24px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Card Base Styles */
+.statusCard,
+.trackingCard,
+.shippingCard {
+  background: white;
+  border: 1px solid #ede5e7;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(45, 27, 32, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: fadeInScale 0.6s ease both;
+}
+
+.statusCard { animation-delay: 0.1s; }
+.trackingCard { animation-delay: 0.2s; }
+.shippingCard { animation-delay: 0.3s; }
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.statusCard:hover,
+.trackingCard:hover,
+.shippingCard:hover {
+  border-color: #c58390;
+  box-shadow: 0 10px 20px rgba(197, 131, 144, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Card glow effect */
+.statusCard::before,
+.trackingCard::before,
+.shippingCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #c58390 0%, #965251 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.statusCard:hover::before,
+.trackingCard:hover::before,
+.shippingCard:hover::before {
+  transform: scaleX(1);
+}
+
+/* Status Card */
+.cardHeader {
+  margin-bottom: 24px;
+}
+
+.cardLabel {
+  font-size: 12px;
+  color: #8a7a7f !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.orderNumber {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2d1b20 !important;
+  margin: 0;
+  font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+  transition: all 0.3s ease;
+}
+
+.statusCard:hover .orderNumber {
+  color: #c58390 !important;
+}
+
+.statusSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.statusStep {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.statusStep.active {
+  opacity: 1;
+}
+
+.statusStep.current .statusIcon {
+  background: linear-gradient(135deg, #c58390 0%, #965251 100%);
+  color: white !important;
+  box-shadow: 0 0 20px rgba(197, 131, 144, 0.5);
+  animation: pulse 2s infinite;
+}
+
+.statusStep.current .statusIcon svg {
+  color: white !important;
+}
+
+.statusStep.current .statusLabel {
+  color: #c58390 !important;
+  font-weight: 600;
+}
+
+.statusIcon {
+  width: 40px;
+  height: 40px;
+  background: rgba(197, 131, 144, 0.12);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c58390 !important;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.statusIcon svg {
+  color: #c58390 !important;
+}
+
+.statusStep.active .statusIcon {
+  background: rgba(197, 131, 144, 0.15);
+  border-color: #c58390;
+}
+
+.statusLabel {
+  font-size: 14px;
+  color: #2d1b20 !important;
+  transition: all 0.3s ease;
+}
+
+/* Tracking Card */
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d1b20 !important;
+  margin: 0 0 20px 0;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.cardTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(135deg, #c58390 0%, #965251 100%);
+  border-radius: 2px;
+}
+
+.trackingDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trackingDetails p {
+  color: #8a7a7f !important;
+}
+
+.trackingInfo,
+.deliveryInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  color: #8a7a7f !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.value {
+  font-size: 14px;
+  color: #2d1b20 !important;
+  font-weight: 500;
+}
+
+.trackingNumber {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d1b20 !important;
+  font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+  background: linear-gradient(135deg, rgba(197, 131, 144, 0.08) 0%, rgba(150, 82, 81, 0.08) 100%);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ede5e7;
+  display: inline-block;
+}
+
+.deliveryDate {
+  font-size: 16px;
+  font-weight: 600;
+  color: #c58390 !important;
+}
+
+/* Shipping Card */
+.shippingContent {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+}
+
+.addressDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.addressLine {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.addressGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.addressGrid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mapContainer {
+  width: 200px;
+  height: 200px;
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.mapPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(197, 131, 144, 0.08) 0%, rgba(150, 82, 81, 0.08) 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c58390 !important;
+  font-size: 48px;
+  border: 1px solid #ede5e7;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.mapPlaceholder svg {
+  color: #c58390 !important;
+}
+
+.mapPlaceholder::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(197, 131, 144, 0.3), transparent);
+  transform: translate(-50%, -50%);
+  animation: pulseMap 2s ease-in-out infinite;
+}
+
+@keyframes pulseMap {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.8); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.shippingCard:hover .mapPlaceholder {
+  background: linear-gradient(135deg, rgba(197, 131, 144, 0.12) 0%, rgba(150, 82, 81, 0.12) 100%);
+  transform: scale(1.05);
+}
+
+/* Order Timeline */
+.orderTimeline {
+  padding: 2rem 1.5rem;
+  background: white;
+  position: relative;
+  border-radius: 20px;
+  margin-bottom: 32px;
+  border: 1px solid #ede5e7;
+  box-shadow: 0 4px 6px rgba(45, 27, 32, 0.06);
+  animation: slideUp 0.6s ease 0.4s both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timelineProgress {
+  position: absolute;
+  top: 3rem;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: #f5f1f2;
+}
+
+.timelineProgressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #c58390 0%, #965251 100%);
+  transition: width 0.5s ease;
+  box-shadow: 0 0 8px rgba(197, 131, 144, 0.3);
+}
+
+.timelineSteps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.timelineStep {
+  flex: 1;
+  text-align: center;
+}
+
+.timelineIcon {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: 2px solid #ede5e7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem;
+  color: #8a7a7f !important;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.timelineIcon svg {
+  color: inherit !important;
+}
+
+.timelineStep.completed .timelineIcon {
+  background: #6b8e6b;
+  border-color: #6b8e6b;
+  color: white !important;
+}
+
+.timelineStep.completed .timelineIcon svg {
+  color: white !important;
+}
+
+.timelineStep.active .timelineIcon {
+  background: linear-gradient(135deg, #c58390 0%, #965251 100%);
+  border-color: transparent;
+  color: white !important;
+  animation: pulse 2s infinite;
+}
+
+.timelineStep.active .timelineIcon svg {
+  color: white !important;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(197, 131, 144, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(197, 131, 144, 0);
+  }
+}
+
+.timelineLabel {
+  font-size: 0.875rem;
+  color: #5c4a4f !important;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.timelineDate {
+  font-size: 0.75rem;
+  color: #8a7a7f !important;
+}
+
+/* Order Details Section */
+.orderDetailsSection {
+  position: relative;
+  z-index: 10;
+  animation: slideUp 0.6s ease 0.5s both;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Order Items Card */
+.orderItemsCard {
+  background: white;
+  border: 1px solid #ede5e7;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(45, 27, 32, 0.06);
+  transition: all 0.3s ease;
+}
+
+.orderItemsCard:hover {
+  box-shadow: 0 10px 20px rgba(197, 131, 144, 0.1);
+}
+
+.orderItemsCard h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d1b20 !important;
+  margin: 0 0 24px 0;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.orderItemsCard h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #c58390 0%, #965251 100%);
+  border-radius: 2px;
+}
+
+/* Table Styles */
+.itemsTable {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.tableHeader {
+  background: #f9f7f8;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 0.8fr 1fr 1.2fr;
+  align-items: center;
+  padding: 16px 20px;
+  transition: all 0.2s ease;
+}
+
+.tableBody .tableRow {
+  border-bottom: 1px solid #f5f1f2;
+}
+
+.tableBody .tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableBody .tableRow:hover {
+  background: linear-gradient(135deg, rgba(197, 131, 144, 0.05) 0%, rgba(150, 82, 81, 0.05) 100%);
+  border-radius: 8px;
+  transform: translateX(4px);
+}
+
+.tableCell {
+  font-size: 14px;
+  color: #2d1b20 !important;
+}
+
+.tableCell strong {
+  color: #2d1b20 !important;
+}
+
+.tableCell:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.tableHeader .tableCell {
+  font-weight: 600;
+  color: #5c4a4f !important;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.itemName {
+  font-weight: 600;
+  color: #2d1b20 !important;
+}
+
+.itemSku {
+  font-size: 12px;
+  color: #8a7a7f !important;
+  font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+}
+
+.itemBrand {
+  font-size: 12px;
+  color: #c58390 !important;
+  background: rgba(197, 131, 144, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+  font-weight: 500;
+}
+
+/* Order Summary */
+.orderSummary {
+  background: #f9f7f8;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+  border: 1px solid #f5f1f2;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.summaryRow span:first-child {
+  color: #8a7a7f !important;
+}
+
+.summaryRow span:last-child {
+  color: #2d1b20 !important;
+  font-weight: 500;
+}
+
+.summaryRow.totalRow {
+  border-top: 2px solid #ede5e7;
+  margin-top: 8px;
+  padding-top: 16px;
+  font-size: 16px;
+}
+
+.summaryRow.totalRow span {
+  font-weight: 700;
+  color: #2d1b20 !important;
+}
+
+.summaryRow.totalRow span:last-child {
+  background: linear-gradient(135deg, #c58390 0%, #965251 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 20px;
+}
+
+.discount {
+  color: #6b8e6b !important;
+}
+
+/* Notes Section */
+.notesSection {
+  background: white;
+  border: 1px solid #ede5e7;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(45, 27, 32, 0.06);
+  margin-top: 24px;
+}
+
+.notesSection h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d1b20 !important;
+  margin: 0 0 16px 0;
+}
+
+.notesSection p {
+  font-size: 14px;
+  color: #5c4a4f !important;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Order Actions */
+.orderActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 24px;
+}
+
+.reorderBtn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #c58390 0%, #965251 100%);
+  color: white !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.reorderBtn svg {
+  color: white !important;
+}
+
+.reorderBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #b07080 0%, #854749 100%);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.reorderBtn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.reorderBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(197, 131, 144, 0.3);
+}
+
+.reorderBtn:hover::before {
+  transform: translateX(0);
+}
+
+/* Error State */
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 40px;
+  animation: fadeIn 0.5s ease;
+}
+
+.errorIcon {
+  font-size: 64px;
+  margin-bottom: 24px;
+  opacity: 0.5;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.errorContainer h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2d1b20 !important;
+  margin-bottom: 12px;
+}
+
+.errorContainer p {
+  font-size: 16px;
+  color: #8a7a7f !important;
+  margin-bottom: 24px;
+}
+
+/* Loading State */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #ede5e7;
+  border-top-color: #c58390;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+.loadingContainer p {
+  color: #5c4a4f !important;
+  font-size: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .topCardsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .shippingContent {
+    grid-template-columns: 1fr;
+  }
+
+  .mapContainer {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .orderDetailContainer {
+    padding: 16px;
+  }
+
+  .orderHeader {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .orderHeader h1 {
+    font-size: 24px;
+    order: 2;
+    width: 100%;
+  }
+
+  .backButton {
+    order: 1;
+  }
+
+  .headerActions {
+    order: 3;
+    margin-left: auto;
+  }
+
+  .topCardsRow {
+    gap: 16px;
+  }
+
+  .statusCard,
+  .trackingCard,
+  .shippingCard,
+  .orderItemsCard {
+    padding: 20px;
+  }
+
+  .addressGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tableRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .tableCell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tableCell::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #8a7a7f !important;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .tableHeader {
+    display: none;
+  }
+
+  .orderSummary {
+    padding: 16px;
+  }
+
+  .timelineSteps {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .timelineProgress {
+    display: none;
+  }
+}
+
+/* Focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #c58390;
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .backButton,
+  .headerActions {
+    display: none !important;
+  }
+
+  .orderDetailContainer {
+    background: white;
+    padding: 0;
+  }
+
+  .orderDetailContainer::before {
+    display: none;
+  }
+
+  * {
+    color: #2d1b20 !important;
+    background: white !important;
+  }
+}

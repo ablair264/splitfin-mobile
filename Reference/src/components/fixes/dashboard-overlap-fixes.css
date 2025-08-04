@@ -1,0 +1,236 @@
+/* Dashboard Overlap Fixes - Resolves component overlapping issues */
+
+/* Fix Settings Menu Position */
+.settings-segmented-menu-container {
+  position: fixed !important;
+  top: 20px !important;  /* Move back to original position */
+  right: 20px !important;
+  z-index: 9999 !important;  /* Ensure it's above other content but not intrusive */
+}
+
+.brand-manager-view,
+.sales-agent-view {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Fix view content positioning */
+.view-content {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;  /* Add margin to prevent overlap with header */
+  overflow: visible;
+}
+
+/* Fix metrics grid overlapping */
+.metrics-grid {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure metric cards don't overflow */
+.metric-card {
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
+  width: 100%;
+  min-width: 0;  /* Prevent grid blowout */
+}
+
+/* Fix full graph container */
+.full-graph-container {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 32px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Ensure shared components respect boundaries */
+.card-chart,
+.card-table,
+.full-graph {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  contain: layout;
+}
+
+/* Fix ColorProvider wrapper issues */
+.view-content > div {
+  width: 100%;
+  position: relative;
+}
+
+/* Overview container specific fixes */
+.overview-container {
+  width: 100%;
+  position: relative;
+  padding: 0 !important;
+}
+
+/* Fix Settings Badge positioning */
+.settings-badge {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 9998 !important;
+}
+
+/* Prevent dropdown panels from causing layout issues */
+.settings-dropdown-panel {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  right: 0 !important;
+  z-index: 10000 !important;
+  max-height: calc(100vh - 100px) !important;
+  overflow-y: auto !important;
+}
+
+/* Fix page header positioning */
+.dashboard-page-header {
+  position: relative;
+  z-index: 10;
+  background: var(--dark-bg, #fff);
+  padding: 20px;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+/* Ensure modals are above everything */
+.modal-overlay {
+  z-index: 20000 !important;
+}
+
+/* Container query fixes for responsive behavior */
+@container (max-width: 1200px) {
+  .metrics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .card-charts-grid,
+  .card-tables-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@container (max-width: 768px) {
+  .view-content {
+    padding: 12px;
+  }
+  
+  .metrics-grid {
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* Fix for segmented button groups in edit mode */
+.segmented-button-group {
+  position: relative;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  padding: 2px;
+}
+
+/* Ensure tooltips and popovers appear above content */
+.tooltip,
+.popover {
+  z-index: 15000 !important;
+}
+
+/* Fix table overflow issues */
+.card-table-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure charts respect container boundaries */
+.recharts-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.recharts-surface {
+  overflow: visible;
+}
+
+/* Fix potential flexbox issues */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure proper stacking context */
+.enhanced-dashboard > * {
+  position: relative;
+}
+
+/* Fix color provider wrapper issues */
+[data-color-provider] {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Responsive fixes for smaller screens */
+@media (max-width: 768px) {
+  .settings-segmented-menu-container {
+    top: 10px !important;
+    right: 10px !important;
+    transform: scale(0.9);
+    transform-origin: top right;
+  }
+  
+  .enhanced-dashboard {
+    padding-top: 60px !important;
+  }
+  
+  .view-content {
+    padding: 10px;
+    margin-top: 10px;
+  }
+}
+
+/* Print media query to hide fixed elements */
+@media print {
+  .settings-segmented-menu-container,
+  .settings-badge {
+    display: none !important;
+  }
+}
+
+/* Additional safety nets */
+.enhanced-dashboard * {
+  box-sizing: border-box;
+}
+
+/* Ensure no horizontal scrollbars appear */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Fix for potential absolute positioned elements */
+.enhanced-dashboard [style*="position: absolute"] {
+  position: relative !important;
+}
+
+/* Exception for elements that should remain absolute */
+.settings-dropdown-panel,
+.modal-overlay,
+.popover {
+  position: absolute !important;
+}
